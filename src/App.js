@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 function App() {
   const [TLights1, setTLights1] = useState(1);
-  const [lightSwitch, setLightSwitch] = useState(false);
+  // const [lightSwitch, setLightSwitch] = useState(false);
 
   const TLights1Handler = () => {
     let i = 0;
@@ -14,9 +14,16 @@ function App() {
     lightRestartHandler();
   };
 
-  const lightSwitchHandler = () => {
-    setInterval(TLights1Handler, 1000);
+  // const lightSwitchHandler = () => {
+  //   setInterval(TLights1Handler, 1000);
+  // };
+  const clearTimer = () => {
+    clearTimeout(TLights1Handler);
   };
+
+  useEffect(() => {
+    setTimeout(TLights1Handler, 1000);
+  });
 
   function lightRestartHandler() {
     if (TLights1 === 3) {
@@ -72,7 +79,7 @@ function App() {
 
   return (
     <>
-      <button onClick={lightSwitchHandler}>Start</button>
+      <button onClick={clearTimer}>Stop</button>
       <div style={trafficLight1}>
         <object style={redLight}></object>
         <object style={yellowLight}></object>
