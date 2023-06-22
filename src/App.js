@@ -4,22 +4,21 @@ let lightSwitchInterval;
 function App() {
   const [TLights1, setTLights1] = useState(0);
 
-  useEffect(() => {
-    lightSwitchInterval = setInterval(TLights1Handler, 1000);
-
-    return () => clearInterval(lightSwitchInterval);
-  }, []);
-
-  const TLights1Handler = () => {
-    setTLights1((currentState) => (currentState + 1) % 3);
-  };
-
   const startInterval = () => {
+    clearInterval(lightSwitchInterval);
     lightSwitchInterval = setInterval(TLights1Handler, 1000);
   };
 
   const stopInterval = () => {
     clearInterval(lightSwitchInterval);
+  };
+
+  useEffect(() => {
+    return () => clearInterval(lightSwitchInterval);
+  }, []);
+
+  const TLights1Handler = () => {
+    setTLights1((currentState) => (currentState + 1) % 3);
   };
 
   const trafficLight1 = {
@@ -29,7 +28,7 @@ function App() {
     alignItems: 'center',
     position: 'relative',
     top: '60px',
-    left: '300px',
+    left: '600px',
     backgroundColor: '#333',
     width: '60px',
     height: '200px',
@@ -42,7 +41,7 @@ function App() {
     alignItems: 'center',
     position: 'relative',
     top: '300px',
-    left: '300px',
+    left: '600px',
     backgroundColor: '#333',
     width: '60px',
     height: '200px',
