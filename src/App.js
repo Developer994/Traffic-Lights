@@ -14,6 +14,10 @@ function App() {
     setTLights1((currentState) => (currentState + 1) % 3);
   };
 
+  const startInterval = () => {
+    lightSwitchInterval = setInterval(TLights1Handler, 1000);
+  };
+
   const stopInterval = () => {
     clearInterval(lightSwitchInterval);
   };
@@ -66,6 +70,8 @@ function App() {
 
   return (
     <>
+      {/* <button onClick={startInterval}>Start</button> */}
+      <button onClick={startInterval}>Start</button>
       <button onClick={stopInterval}>Stop</button>
       <div style={trafficLight1}>
         <object style={redLight}></object>
